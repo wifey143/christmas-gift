@@ -14,7 +14,7 @@ export default function Page4() {
 
       <button
         style={styles.button}
-        onClick={() => router.push("/final")}
+        onClick={() => router.push("/us")}
       >
         Next →
       </button>
