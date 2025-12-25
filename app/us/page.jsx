@@ -13,7 +13,7 @@ export default function UsPage() {
       />
 
       <h1 style={styles.text}>
-        This Is Us Together✨️<br />
+        This Is Us Together ✨️<br />
         Isn’t It Cute??
       </h1>
 
@@ -43,7 +43,7 @@ const styles = {
     boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
   },
   text: {
-    fontSize: "2.3rem",
+    fontSize: "2.2rem",
     lineHeight: 1.25,
     color: "#ffd1dc",
   },
