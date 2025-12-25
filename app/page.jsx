@@ -24,7 +24,7 @@ export default function Page1() {
       <div style={styles.card}>
         <p>
           I wanted to do something this Christmass..
-          because you mean a lot to me🤌🏼
+          because you mean a lot to me !!
         </p>
 
         <button style={styles.button} onClick={startMusic}>
