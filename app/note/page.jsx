@@ -33,7 +33,7 @@ const styles = {
     fontSize: "2.2rem",
   },
  envelope: {
-  fontSize: "10rem",   // 👈 bigger size
+  fontSize: "12rem",   // 👈 bigger size
   cursor: "pointer",
   transition: "transform 0.3s ease",
   animation: "bounce 1.5s infinite",
