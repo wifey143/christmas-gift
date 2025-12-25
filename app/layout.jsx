@@ -1,9 +1,16 @@
 import "./globals.css";
-import { Dancing_Script } from "next/font/google";
+import { Poppins, Pacifico } from "next/font/google";
 
-const dancing = Dancing_Script({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
+});
+
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-title",
 });
 
 export const metadata = {
@@ -14,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={dancing.className}>
+      <body className={`${poppins.variable} ${pacifico.variable}`}>
         <div className="snow"></div>
         {children}
       </body>
