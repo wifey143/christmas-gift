@@ -4,6 +4,18 @@ import { useRouter } from "next/navigation";
 export default function Page1() {
   const router = useRouter();
 
+  const startMusic = () => {
+    const audio = new Audio("/bg.mp3");
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.play();
+
+    // store music so it continues
+    window.bgMusic = audio;
+
+    router.push("/note");
+  };
+
   return (
     <main style={styles.main}>
       <h3 style={styles.small}>a little christmas thought… 🎄</h3>
@@ -14,9 +26,8 @@ export default function Page1() {
           I wanted to do a tiny something this Christmas,
           because you mean a lot to me.
         </p>
-        <p style={{ marginTop: 10 }}>Tap below, okay?</p>
 
-        <button style={styles.button} onClick={() => router.push("/note")}>
+        <button style={styles.button} onClick={startMusic}>
           Open Your Gift →
         </button>
       </div>
@@ -33,14 +44,8 @@ const styles = {
     justifyContent: "center",
     textAlign: "center",
   },
-  small: {
-    color: "#ff9fb5",
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: "3rem",
-    marginBottom: 20,
-  },
+  small: { color: "#ff9fb5" },
+  title: { fontSize: "3rem", marginBottom: 20 },
   card: {
     background: "rgba(0,0,0,0.4)",
     padding: 30,
