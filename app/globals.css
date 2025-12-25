@@ -1,12 +1,4 @@
 body {
-  font-family: var(--font-body);
-}
-
-/* Romantic titles */
-h1, h2, h3 {
-  font-family: var(--font-title);
-}
-body {
   margin: 0;
   padding: 0;
   background: radial-gradient(circle at top, #2a1a0a, #120b05);
