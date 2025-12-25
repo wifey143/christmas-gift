@@ -13,8 +13,8 @@ export default function UsPage() {
       />
 
       <h1 style={styles.text}>
-        This Is Us ✨️<br />
-        Isn’t Cute??
+        This Is Us Together✨️<br />
+        Isn’t It Cute??
       </h1>
 
       <button
