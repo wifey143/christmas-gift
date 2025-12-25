@@ -24,7 +24,7 @@ export default function FinalPage() {
       />
 
       <button style={styles.button} onClick={goBackHome}>
-        ⟵ Return to Start
+        ⟵ Return
       </button>
     </main>
   );
