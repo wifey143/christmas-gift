@@ -11,10 +11,10 @@ export default function Page3() {
       <div style={styles.card}>
         <p>
           This little message is just to remind you
-          how special you are.
+          how special you are for Me !!
         </p>
         <p style={{ marginTop: 12 }}>
-          Keep smiling, okay? 🌸
+          Keep smiling!! okkay? 🌸
         </p>
 
         <button
