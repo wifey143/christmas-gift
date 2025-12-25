@@ -1,4 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 "use client";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +6,7 @@ export default function Page3() {
 
   return (
     <main style={styles.main}>
-      <h1 style="font-family: 'Cinzel', serif;">Miss Harshita ✨</h1>
+      <h1>Miss Harshita ✨</h1>
 
       <div style={styles.card}>
         <p>
