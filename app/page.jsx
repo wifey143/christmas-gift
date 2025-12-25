@@ -7,7 +7,7 @@ export default function Page1() {
   const startMusic = () => {
     const audio = new Audio("/bg.mp3");
     audio.loop = true;
-    audio.volume = 0.5;
+    audio.volume = 0.3;
     audio.play();
 
     // store music so it continues
