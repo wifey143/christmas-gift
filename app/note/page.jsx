@@ -32,11 +32,15 @@ const styles = {
     marginBottom: 30,
     fontSize: "2.2rem",
   },
-  envelope: {
-    fontSize: "6rem",
-    cursor: "pointer",
-    animation: "bounce 1.5s infinite",
-  },
+ envelope: {
+  fontSize: "10rem",   // 👈 bigger size
+  cursor: "pointer",
+  transition: "transform 0.3s ease",
+  animation: "bounce 1.5s infinite",
+},
+  envelopeHover: {
+  transform: "scale(1.1)",
+},
   text: {
     marginTop: 20,
     opacity: 0.8,
