@@ -18,13 +18,13 @@ export default function Page1() {
 
   return (
     <main style={styles.main}>
-      <h3 style={styles.small}>a little christmas thought… 🎄</h3>
-      <h1 style={styles.title}>Hey You</h1>
+      <h3 style={styles.small}>A Little Christmas Thought… 🎄</h3>
+      <h1 style={styles.title}>Heyy Youu 🫵🏻</h1>
 
       <div style={styles.card}>
         <p>
-          I wanted to do a tiny something this Christmas,
-          because you mean a lot to me.
+          I wanted to do something this Christmass..
+          because you mean a lot to me🤌🏼
         </p>
 
         <button style={styles.button} onClick={startMusic}>
