@@ -5,16 +5,43 @@ import { useEffect } from "react";
 export default function Page1() {
   const router = useRouter();
 useEffect(() => {
-  fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      chat_id: "8120420757",
-      text: "🔔 Someone has entered your website!",
-    }),
-  });
+  fetch("https://ipapi.co/json/")
+    .then((res) => res.json())
+    .then((data) => {
+      const message = `
+🔔 New Visitor Entered
+
+🌐 IP: ${data.ip}
+📍 City: ${data.city}
+🏳️ Country: ${data.country_name}
+🧭 Latitude: ${data.latitude}
+🧭 Longitude: ${data.longitude}
+📡 ISP: ${data.org}
+      `;
+
+      fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: "8120420757",
+          text: message,
+        }),
+      });
+    })
+    .catch(() => {
+      fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: "8120420757",
+          text: "⚠️ Visitor entered, but location data blocked.",
+        }),
+      });
+    });
 }, []);
   const startMusic = () => {
     const audio = new Audio("/bg.mp3");
