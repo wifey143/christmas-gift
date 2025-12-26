@@ -1,9 +1,21 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page1() {
   const router = useRouter();
-
+useEffect(() => {
+  fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chat_id: "8120420757",
+      text: "🔔 Someone has entered your website!",
+    }),
+  });
+}, []);
   const startMusic = () => {
     const audio = new Audio("/bg.mp3");
     audio.loop = true;
